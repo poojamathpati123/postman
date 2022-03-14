@@ -1,0 +1,464 @@
+{
+	"info": {
+		"_postman_id": "113e1ef5-cffe-44c1-9d77-47e9a9a770db",
+		"name": "E-commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\": \"Nanu123@gmail.com\",\r\n\t\"password\": \"Sana@2\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ecommerceservice.herokuapp.com/user/signup",
+					"protocol": "https",
+					"host": [
+						"ecommerceservice",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.globals.set(\"Token\", jsonData.accessToken);\r",
+							"pm.environment.set(\"Token env\", jsonData.accessToken)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\": \"{{email}}\",\r\n\t\"password\": \"{{password}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ecommerceservice.herokuapp.com/{{Endpoint}}",
+					"protocol": "https",
+					"host": [
+						"ecommerceservice",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"{{Endpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI5YzQ1M2I0OGQ1YTAwMTdhNWJkNmUiLCJpYXQiOjE2NDY5MDQ0MzIsImV4cCI6MTY0Njk5MDgzMn0.ll8fYad8DTsPQ7diD7GTCUthuf2mkxCHhFIPLzRhwX4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ecommerceservice.herokuapp.com/user",
+					"protocol": "https",
+					"host": [
+						"ecommerceservice",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User By ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI5YzQ1M2I0OGQ1YTAwMTdhNWJkNmUiLCJpYXQiOjE2NDY5MDQ0MzIsImV4cCI6MTY0Njk5MDgzMn0.ll8fYad8DTsPQ7diD7GTCUthuf2mkxCHhFIPLzRhwX4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://ecommerceservice.herokuapp.com/user/62271860625984001745bfb9",
+					"protocol": "https",
+					"host": [
+						"ecommerceservice",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"62271860625984001745bfb9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI5YzQ1M2I0OGQ1YTAwMTdhNWJkNmUiLCJpYXQiOjE2NDY5MDQ0MzIsImV4cCI6MTY0Njk5MDgzMn0.ll8fYad8DTsPQ7diD7GTCUthuf2mkxCHhFIPLzRhwX4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ecommerceservice.herokuapp.com/products",
+					"protocol": "https",
+					"host": [
+						"ecommerceservice",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.environment.set(\"id\", jsonData.product._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"HP 117\",\r\n\t\"price\": 20000\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ecommerceservice.herokuapp.com/products",
+					"protocol": "https",
+					"host": [
+						"ecommerceservice",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI5YzQ1M2I0OGQ1YTAwMTdhNWJkNmUiLCJpYXQiOjE2NDY5MDQ0MzIsImV4cCI6MTY0Njk5MDgzMn0.ll8fYad8DTsPQ7diD7GTCUthuf2mkxCHhFIPLzRhwX4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ecommerceservice.herokuapp.com/products/{{id}}",
+					"protocol": "https",
+					"host": [
+						"ecommerceservice",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"products",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI5YzQ1M2I0OGQ1YTAwMTdhNWJkNmUiLCJpYXQiOjE2NDY5MDQ0MzIsImV4cCI6MTY0Njk5MDgzMn0.ll8fYad8DTsPQ7diD7GTCUthuf2mkxCHhFIPLzRhwX4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"HP 787\",\r\n\t\"price\": 35000\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ecommerceservice.herokuapp.com/products/6229c6b4b48d5a0017a5bd8e",
+					"protocol": "https",
+					"host": [
+						"ecommerceservice",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"products",
+						"6229c6b4b48d5a0017a5bd8e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI5YzQ1M2I0OGQ1YTAwMTdhNWJkNmUiLCJpYXQiOjE2NDY5MDQ0MzIsImV4cCI6MTY0Njk5MDgzMn0.ll8fYad8DTsPQ7diD7GTCUthuf2mkxCHhFIPLzRhwX4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://ecommerceservice.herokuapp.com/products/6217244d7a9fc400174c2890",
+					"protocol": "https",
+					"host": [
+						"ecommerceservice",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"products",
+						"6217244d7a9fc400174c2890"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
